@@ -1,31 +1,122 @@
 {
+  // "compilerOptions" 部分包含了 TypeScript 编译器（tsc）的所有配置选项。
   "compilerOptions": {
+    // "target": "ES2017"
+    // 指定编译后的 JavaScript 代码要遵循哪个 ECMAScript 版本标准。
+    // "ES2017" 表示编译后的代码可以在支持 ES2017 及以上版本的 JavaScript 环境中运行。
+    // 这决定了编译器会使用哪些语法糖以及需要 polyfill（垫片）哪些新特性。
     "target": "ES2017",
+
+    // "lib": ["dom", "dom.iterable", "esnext"]
+    // 指定编译过程中需要引入哪些库的类型定义文件（.d.ts）。
+    // "dom": 包含浏览器环境的 DOM API 类型，比如 `document`、`window`。
+    // "dom.iterable": 包含 DOM 集合的迭代器类型，允许你在 `NodeList` 等上面使用 `for...of`。
+    // "esnext": 包含最新的、尚未成为稳定标准的 ECMAScript 特性的类型。
     "lib": ["dom", "dom.iterable", "esnext"],
+
+    // "allowJs": true
+    // 是否允许在项目中混合使用 JavaScript (.js) 文件和 TypeScript (.ts) 文件。
+    // `true` 表示允许，编译器会尝试理解并处理 .js 文件。
     "allowJs": true,
+
+    // "skipLibCheck": true
+    // 是否跳过对所有声明文件 (.d.ts) 的类型检查。
+    // `true` 可以加快编译速度，尤其是在有很多第三方库依赖时。
+    // 因为我们通常假设库的类型定义是正确的。
     "skipLibCheck": true,
+
+    // "strict": true
+    // 是否启用所有严格的类型检查选项。
+    // 这包括 `noImplicitAny`, `strictNullChecks`, `strictFunctionTypes` 等。
+    // 强烈推荐开启，有助于在编译阶段捕获更多潜在错误，提高代码质量。
     "strict": true,
+
+    // "noEmit": true
+    // 是否不生成实际的 JavaScript 输出文件。
+    // `true` 表示 TypeScript 编译器只进行类型检查，而不产生编译结果（.js, .js.map 文件等）。
+    // 在 Next.js 项目中，通常由 Next.js 的构建流程（内部可能使用 Babel 或 SWC）负责最终的代码转换和打包，
+    // 所以 tsc 主要负责类型检查。
     "noEmit": true,
+
+    // "esModuleInterop": true
+    // 是否启用 ES 模块与 CommonJS 模块之间的互操作性。
+    // `true` 允许你像导入 ES 模块一样导入 CommonJS 模块（比如使用 `import React from 'react'` 而不是 `import * as React from 'react'`）。
+    // 它通过生成一些辅助代码来实现这种兼容性。
     "esModuleInterop": true,
+
+    // "module": "esnext"
+    // 指定生成的 JavaScript 代码使用哪种模块系统。
+    // "esnext" 表示使用最新的 ES 模块标准。让下游的打包工具（如 Webpack/Next.js）来处理模块的最终格式。
     "module": "esnext",
+
+    // "moduleResolution": "bundler"
+    // 指定模块解析策略，即编译器如何查找导入的模块文件。
+    // "bundler" 是较新的策略（TypeScript 5.0+），更接近现代打包工具（如 Webpack, Vite）的行为方式。
+    // 它依赖 `package.json` 中的 `exports` 字段等现代特性。
+    // 旧的常用值是 "node"。
     "moduleResolution": "bundler",
+
+    // "resolveJsonModule": true
+    // 是否允许导入 .json 文件，并将其内容作为 JavaScript 对象使用。
+    // `true` 使得你可以 `import config from './config.json'`。
     "resolveJsonModule": true,
+
+    // "isolatedModules": true
+    // 是否要求每个文件都必须能够被视为一个独立的模块，可以被单独编译。
+    // `true` 确保代码可以在不支持跨文件分析的转换器（如 Babel）下正常工作。
+    // 它会禁止某些 TypeScript 特性，比如 `const enum`。
     "isolatedModules": true,
+
+    // "jsx": "preserve"
+    // 如何处理 JSX 语法。
+    // "preserve" 表示保留原始的 JSX 语法，不进行转换。
+    // 期望后续的处理步骤（比如 Next.js 使用的 Babel 或 SWC）来将 JSX 转换为 JavaScript 函数调用（如 `React.createElement`）。
     "jsx": "preserve",
+
+    // "incremental": true
+    // 是否启用增量编译。
+    // `true` 时，编译器会在第一次编译后生成一个构建信息文件（通常是 `.tsbuildinfo`）。
+    // 后续编译时，tsc 可以利用这个文件只重新编译发生变化的部分，从而加快编译速度。
     "incremental": true,
+
+    // "baseUrl": "."
+    // 设置解析非相对模块路径的基础目录。
+    // `.` 表示项目根目录（即 `tsconfig.json` 所在的目录）。
+    // 这个选项通常与下面的 `paths` 配合使用，以实现路径别名。
     "baseUrl": ".",
+
+    // "plugins": [{"name": "next"}]
+    // 配置 TypeScript 语言服务插件。这些插件可以在编辑器中提供额外的功能或检查。
+    // `"name": "next"` 表示启用 Next.js 提供的官方 TypeScript 插件，
+    // 它可以增强 Next.js 项目在 VS Code 等编辑器中的开发体验（比如对页面文件、API 路由等的特殊支持）。
     "plugins": [
       {
         "name": "next"
       }
     ],
+
+    // "paths": { ... }
+    // 配置路径映射（别名）。它允许你用简短的别名代替冗长的相对路径。
+    // 这里的配置必须基于上面设置的 `baseUrl`。
+    // 例如，`"@/*": ["./*"]` 允许你使用 `@/components/Button` 来代替 `./components/Button`。
     "paths": {
-      "@/*": ["./*"],
-      "@components/*": ["./components/*"],
-      "@lib/*": ["./lib/*"],
-      "@app/*": ["./app/*"]
+      "@/*": ["./*"], // `@/` 指向项目根目录下的任何文件/文件夹
+      "@components/*": ["./components/*"], // `@components/` 指向 `./components/` 目录下的任何文件/文件夹
+      "@lib/*": ["./lib/*"], // `@lib/` 指向 `./lib/` 目录下的任何文件/文件夹
+      "@app/*": ["./app/*"] // `@app/` 指向 `./app/` 目录下的任何文件/文件夹
     }
   },
+
+  // "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"]
+  // 指定哪些文件或目录应该被 TypeScript 编译器包含进来进行编译和检查。
+  // `next-env.d.ts`: Next.js 自动生成的类型声明文件，确保 Next.js 的特定类型被识别。
+  // `**/*.ts`: 包含项目下所有子目录中的 .ts 文件。`**` 代表任意层级的目录。
+  // `**/*.tsx`: 包含项目下所有子目录中的 .tsx (包含 JSX 的 TypeScript) 文件。
+  // `.next/types/**/*.ts`: 包含 Next.js 在构建过程中可能生成的类型文件。
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+
+  // "exclude": ["node_modules"]
+  // 指定哪些文件或目录应该被排除在编译之外。
+  // `node_modules`: 包含所有第三方依赖库，通常不需要 TypeScript 去检查或编译它们（会非常慢，且通常有 .d.ts 文件）。
   "exclude": ["node_modules"]
 }
