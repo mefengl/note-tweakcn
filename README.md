@@ -12,50 +12,50 @@
 
 核心主题和编辑器逻辑：
 
-* [`config/theme.ts`](./config/theme.ts)* (基础主题配置)
-* [`config/editors/theme.ts`](./config/editors/theme.ts)* (编辑器特定主题配置)
-* [`types/theme.ts`](./types/theme.ts)* (主题相关的类型定义)
-* [`types/editor.ts`](./types/editor.ts)* (编辑器相关的类型定义)
-* [`store/editor-store.ts`](./store/editor-store.ts)* (编辑器状态管理)
-* [`store/preferences-store.ts`](./store/preferences-store.ts)* (用户偏好状态管理)
-* [`components/editor/editor.tsx`](./components/editor/editor.tsx)* (核心编辑器组件)
-* [`components/editor/theme-control-panel.tsx`](./components/editor/theme-control-panel.tsx)* (主题控制面板 UI)
-* [`components/editor/theme-preview-panel.tsx`](./components/editor/theme-preview-panel.tsx)* (主题预览面板 UI)
-* [`components/editor/action-bar.tsx`](./components/editor/action-bar.tsx)* (编辑器操作栏)
-* [`components/editor/header.tsx`](./components/editor/header.tsx)* (编辑器页眉)
-* [`components/editor/code-panel.tsx`](./components/editor/code-panel.tsx)* (代码输出面板)
-* [`components/editor/css-import-dialog.tsx`](./components/editor/css-import-dialog.tsx)* (CSS导入对话框)
-* [`utils/theme-style-generator.ts`](./utils/theme-style-generator.ts)* (生成主题CSS的逻辑)
-* [`utils/theme-presets.ts`](./utils/theme-presets.ts)* (预设主题处理)
-* [`utils/parse-css-input.ts`](./utils/parse-css-input.ts)* (解析用户输入的CSS)
-* [`utils/color-converter.ts`](./utils/color-converter.ts)* (颜色转换工具)
-* [`utils/contrast-checker.ts`](./utils/contrast-checker.ts)* (对比度检查工具)
+* [`config/theme.ts`](./config/theme.ts) (基础主题配置)
+* [`config/editors/theme.ts`](./config/editors/theme.ts) (编辑器特定主题配置)
+* [`types/theme.ts`](./types/theme.ts) (主题相关的类型定义)
+* [`types/editor.ts`](./types/editor.ts) (编辑器相关的类型定义)
+* [`store/editor-store.ts`](./store/editor-store.ts) (编辑器状态管理)
+* [`store/preferences-store.ts`](./store/preferences-store.ts) (用户偏好状态管理)
+* [`components/editor/editor.tsx`](./components/editor/editor.tsx) (核心编辑器组件)
+* [`components/editor/theme-control-panel.tsx`](./components/editor/theme-control-panel.tsx) (主题控制面板 UI)
+* [`components/editor/theme-preview-panel.tsx`](./components/editor/theme-preview-panel.tsx) (主题预览面板 UI)
+* [`components/editor/action-bar.tsx`](./components/editor/action-bar.tsx) (编辑器操作栏)
+* [`components/editor/header.tsx`](./components/editor/header.tsx) (编辑器页眉)
+* [`components/editor/code-panel.tsx`](./components/editor/code-panel.tsx) (代码输出面板)
+* [`components/editor/css-import-dialog.tsx`](./components/editor/css-import-dialog.tsx) (CSS导入对话框)
+* [`utils/theme-style-generator.ts`](./utils/theme-style-generator.ts) (生成主题CSS的逻辑)
+* [`utils/theme-presets.ts`](./utils/theme-presets.ts) (预设主题处理)
+* [`utils/parse-css-input.ts`](./utils/parse-css-input.ts) (解析用户输入的CSS)
+* [`utils/color-converter.ts`](./utils/color-converter.ts) (颜色转换工具)
+* [`utils/contrast-checker.ts`](./utils/contrast-checker.ts) (对比度检查工具)
 * 自定义 Hooks：
   * [`hooks/use-contrast-checker.ts`](./hooks/use-contrast-checker.ts) (对比度检查 Hook)
   * [`hooks/use-fullscreen.ts`](./hooks/use-fullscreen.ts) (全屏 Hook)
   * [`hooks/use-github-stars.ts`](./hooks/use-github-stars.ts) (获取 GitHub 星标 Hook)
   * [`hooks/use-mobile.tsx`](./hooks/use-mobile.tsx) (移动端检测 Hook)
-  * [`hooks/use-theme-preset-from-url.ts`](./hooks/use-theme-preset-from-url.ts)* (从 URL 获取主题预设 Hook)
-  * [`hooks/use-toast.ts`](./hooks/use-toast.ts)* (Toast 通知 Hook)
+  * [`hooks/use-theme-preset-from-url.ts`](./hooks/use-theme-preset-from-url.ts) (从 URL 获取主题预设 Hook)
+  * [`hooks/use-toast.ts`](./hooks/use-toast.ts) (Toast 通知 Hook)
 * [`utils/`](./utils/)* (其他工具函数 - 浏览内部文件)
 
 通用组件和工具：
 
-* [`components/ui/`](./components/ui/)* (Shadcn UI 基础组件 - 浏览内部文件)
-* [`components/theme-provider.tsx`](./components/theme-provider.tsx)* (全局主题提供者)
-* [`components/theme-script.tsx`](./components/theme-script.tsx)* (用于主题切换的脚本)
+* [`components/ui/`](./components/ui/) (Shadcn UI 基础组件 - 浏览内部文件)
+* [`components/theme-provider.tsx`](./components/theme-provider.tsx) (全局主题提供者)
+* [`components/theme-script.tsx`](./components/theme-script.tsx) (用于主题切换的脚本)
 * [`lib/utils.ts`](./lib/utils.ts) (通用工具函数)
 
 示例和展示组件 (可选深入研究)：
 
-* [`components/examples/`](./components/examples/)* (各种使用 Shadcn UI 的示例组件 - 浏览内部文件)
-* [`components/home/`](./components/home/)* (主页特定组件 - 浏览内部文件)
+* [`components/examples/`](./components/examples/) (各种使用 Shadcn UI 的示例组件 - 浏览内部文件)
+* [`components/home/`](./components/home/) (主页特定组件 - 浏览内部文件)
 
 其他配置和脚本：
 
-* [`postcss.config.mjs`](./postcss.config.mjs)* (PostCSS 配置)
-* [`eslint.config.mjs`](./eslint.config.mjs)* (ESLint 配置)
-* [`scripts/generate-theme-registry.ts`](./scripts/generate-theme-registry.ts)* (生成主题注册表的脚本)
+* [`postcss.config.mjs`](./postcss.config.mjs) (PostCSS 配置)
+* [`eslint.config.mjs`](./eslint.config.mjs) (ESLint 配置)
+* [`scripts/generate-theme-registry.ts`](./scripts/generate-theme-registry.ts) (生成主题注册表的脚本)
 
 <div align="center">
   <h1>tweakcn.com</h1>
